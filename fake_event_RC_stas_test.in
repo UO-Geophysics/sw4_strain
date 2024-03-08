@@ -5,29 +5,32 @@
 # Or with a slurm script on Talapas
 
 # Sets up the grid
-grid x=383790 y=329120 z=1030000 lat=33.361 lon=-120.532 az=0 h=163 # lat and lon are grid origin location, h defines grid spacing
+grid x=431540 y=384590 z=1030000 lat=33.111 lon=-120.782 az=0 h=810 # lat and lon are grid origin location, h defines grid spacing
+
+# Sets up supergrid
+supergrid gp=30
 
 # Output directory
 fileio path=rc_fake-results verbose=3
 
 # Define the material properties everywhere (half-space)
-block vp=1839 vs=810 rho=2100.0 z1=0 z2=30.0
-block vp=2800 vs=1400 rho=2300.0 z1=30.0 z2=100.0
-block vp=3400 vs=1700 rho=2400.0 z1=100.0 z2=300.0
-block vp=3900 vs=2000 rho=2500.0 z1=300.0 z2=500.0
-block vp=4300 vs=2300 rho=2600.0 z1=500.0 z2=700.0
-block vp=4400 vs=2500 rho=2650.0 z1=700.0 z2=1000.0
-block vp=5100 vs=2800 rho=2700.0 z1=1000.0 z2=3000.0
-block vp=6000 vs=3300 rho=2750.0 z1=3000.0 z2=5000.0
-block vp=6100 vs=3450 rho=2800.0 z1=5000.0 z2=6000.0
-block vp=6150 vs=3600 rho=2825.0 z1=6000.0 z2=11000.0
-block vp=6320 vs=3650 rho=2850.0 z1=11000.0 z2=16000.0
-block vp=6550 vs=3700 rho=2900.0 z1=16000.0 z2=21000.0
-block vp=6800 vs=3800 rho=2950.0 z1=21000.0 z2=31000.0
-block vp=7800 vs=4500 rho=3200.0 z1=31000.0 z2=1030000.0
+block vp=1839 vs=810 rho=2100 z1=0 z2=30
+block vp=2800 vs=1400 rho=2300 z1=30 z2=100
+block vp=3400 vs=1700 rho=2400 z1=100 z2=300
+block vp=3900 vs=2000 rho=2500 z1=300 z2=500
+block vp=4300 vs=2300 rho=2600 z1=500 z2=700
+block vp=4400 vs=2500 rho=2650 z1=700 z2=1000
+block vp=5100 vs=2800 rho=2700 z1=1000 z2=3000
+block vp=6000 vs=3300 rho=2750 z1=3000 z2=5000
+block vp=6100 vs=3450 rho=2800 z1=5000 z2=6000
+block vp=6150 vs=3600 rho=2825 z1=6000 z2=11000
+block vp=6320 vs=3650 rho=2850 z1=11000 z2=16000
+block vp=6550 vs=3700 rho=2900 z1=16000 z2=21000
+block vp=6800 vs=3800 rho=2950 z1=21000 z2=31000
+block vp=7800 vs=4500 rho=3200 z1=31000
 
 # Made up event with moment characteristics from first source line of M7.0_strains.in file
-source lat=35.7695 lon=-117.5993333 depth=8000 mxx=-0.00000e+00 mxy=2.08697e-01 mxz=-5.73390e-01 myy=-6.40547e+15 myz=7.63374e+15 mzz=6.40547e+15 type=Liu t0=9.800 freq=2.417
+source lat=35.7695 lon=-117.5993333 depth=8000 mxx=-0.00000e+00 mxy=2.08697e-01 mxz=-5.73390e-01 myy=-6.40547e+15 myz=7.63374e+15 mzz=6.40547e+15 type=Liu t0=0.1 freq=2.417
 
 # Length of final waveforms
 time t=20
