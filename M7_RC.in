@@ -5,7 +5,7 @@
 # Or with a slurm script on Talapas
 
 # Sets up the grid
-grid x=431540 y=384590 z=1030000 lat=33.111 lon=-120.782 az=0 h=810 # lat and lon are grid origin location, h defines grid spacing
+grid x=479550 y=440060 z=1030000 lat=32.861 lon=-121.032 az=0 h=810 # lat and lon are grid origin location, h defines grid spacing
 
 # Sets up supergrid
 supergrid gp=30
@@ -36,14 +36,14 @@ block vp=7800 vs=4500 rho=3200 z1=31000
 rupture file=july6.000000.srf
 
 # Length of final waveforms
-time t=120
+time t=60
 
 # Receiver stations
-rec lat=35.831 lon=-120.345 depth=159.7 variables=strains file=B072 usgsformat=1 sacformat=0
-rec lat=35.716 lon=-120.206 depth=181.5 variables=strains file=B079 usgsformat=1 sacformat=0
-rec lat=33.598 lon=-116.596 depth=242.6 variables=strains file=B082 usgsformat=1 sacformat=0
-rec lat=33.495 lon=-116.603 depth=160.9 variables=strains file=B087 usgsformat=1 sacformat=0
-rec lat=36.193 lon=-117.668 depth=176.5 variables=strains file=B916 usgsformat=1 sacformat=0
-rec lat=35.389 lon=-117.259 depth=162.5 variables=strains file=B917 usgsformat=1 sacformat=0
-rec lat=35.936 lon=-117.602 depth=196.7 variables=strains file=B918 usgsformat=1 sacformat=0
-rec lat=35.587 lon=-117.462 depth=147.4 variables=strains file=B921 usgsformat=1 sacformat=0
+rec lat=35.831 lon=-120.345 depth=159.7 variables=strains file=B072 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.716 lon=-120.206 depth=181.5 variables=strains file=B079 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=242.6 variables=strains file=B082 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.495 lon=-116.603 depth=160.9 variables=strains file=B087 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.193 lon=-117.668 depth=176.5 variables=strains file=B916 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.389 lon=-117.259 depth=162.5 variables=strains file=B917 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.936 lon=-117.602 depth=196.7 variables=strains file=B918 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.587 lon=-117.462 depth=147.4 variables=strains file=B921 usgsformat=1 sacformat=0 writeEvery=50
