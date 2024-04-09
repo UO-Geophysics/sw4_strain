@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH --job-name=sw4_usgs_rc     ### Job Name (appears in queue - public)
+#SBATCH --partition=compute     ### Quality of Service (like a queue in PBS) - could name after PIRG
+#SBATCH --time=1-00:00:00       ### Wall clock time limit in Days-HH:MM:SS - always set for longer than you think you need (usually 4+ hours takes a while to get in)
+#SBATCH --ntasks=60              ### Number of tasks to be launched per Node - distributed across system
+#Amount of memory per task - could put more for less well-parallelized code
+#SBATCH --account=tlalollin
+
+module load sw4/3.0.0
+mpirun -np $SLURM_NTASKS sw4 usgs_rc.in # Relative path from the SLURM script to the input file in the Talapas file system
