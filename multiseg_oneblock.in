@@ -1,0 +1,57 @@
+####################################################
+### SW4 INPUT FILE FOR RIDGECREST, CALIFORNIA - STRAINS ###
+####################################################
+# Run me with mpirun -np $num_cpus$ $path_to_sw4_folder$ multiseg_oneblock.in
+# Or with a slurm script on Talapas
+
+# Sets up the grid
+grid x=479550 y=440060 z=1030000 lat=32.861 lon=-121.032 az=0 h=810 # lat and lon are grid origin location, h defines grid spacing
+
+# Sets up supergrid
+supergrid gp=30
+
+# Output directory
+fileio path=multiseg_oneblock-results verbose=1
+
+# Define the material properties everywhere (half-space)
+block vp=1839 vs=810 rho=2100 z1=0 z2=30
+block vp=2800 vs=1400 rho=2300 z1=30 z2=100
+block vp=3400 vs=1700 rho=2400 z1=100 z2=300
+block vp=3900 vs=2000 rho=2500 z1=300 z2=500
+block vp=4300 vs=2300 rho=2600 z1=500 z2=700
+block vp=4400 vs=2500 rho=2650 z1=700 z2=1000
+block vp=5100 vs=2800 rho=2700 z1=1000 z2=3000
+block vp=6000 vs=3300 rho=2750 z1=3000 z2=5000
+block vp=6100 vs=3450 rho=2800 z1=5000 z2=6000
+block vp=6150 vs=3600 rho=2825 z1=6000 z2=11000
+block vp=6320 vs=3650 rho=2850 z1=11000 z2=16000
+block vp=6550 vs=3700 rho=2900 z1=16000 z2=21000
+block vp=6800 vs=3800 rho=2950 z1=21000 z2=31000
+block vp=7800 vs=4500 rho=3200 z1=31000
+
+# Made up event with moment characteristics from first source line of M7.0_strains.in file
+# source lat=35.7695 lon=-117.5993333 depth=8000 mxx=-0.00000e+00 mxy=2.08697e-01 mxz=-5.73390e-01 myy=-6.40547e+15 myz=7.63374e+15 mzz=6.40547e+15 type=Liu t0=0.1 freq=2.417
+
+# M7.2 earthquake from Fakequakes ruptures for GNSS project, converted to SRF
+rupture file=RC_M7_multiseg_oneblock.srf
+
+# Length of final waveforms
+time t=120
+
+# Receiver stations
+rec lat=35.831 lon=-120.345 depth=159.7 variables=strains file=B072 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.716 lon=-120.206 depth=181.5 variables=strains file=B079 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=242.6 variables=strains file=B082 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.495 lon=-116.603 depth=160.9 variables=strains file=B087 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.193 lon=-117.668 depth=176.5 variables=strains file=B916 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.389 lon=-117.259 depth=162.5 variables=strains file=B917 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.936 lon=-117.602 depth=196.7 variables=strains file=B918 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.587 lon=-117.462 depth=147.4 variables=strains file=B921 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.831 lon=-120.345 depth=159.7 variables=displacement file=B072d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.716 lon=-120.206 depth=181.5 variables=displacement file=B079d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=242.6 variables=displacement file=B082d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.495 lon=-116.603 depth=160.9 variables=displacement file=B087d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.193 lon=-117.668 depth=176.5 variables=displacement file=B916d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.389 lon=-117.259 depth=162.5 variables=displacement file=B917d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.936 lon=-117.602 depth=196.7 variables=displacement file=B918d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.587 lon=-117.462 depth=147.4 variables=displacement file=B921d usgsformat=1 sacformat=0 writeEvery=50

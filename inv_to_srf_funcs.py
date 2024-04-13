@@ -487,8 +487,8 @@ def write_point_stf(fout, slip_kfault, total_time_kfault, stf_dt, rise_time_kfau
     return points_headers
 
 
-def write_srf(file_path, inv_or_rupt, segment_plots, stf_dt=0.1, stf_type='triangle',
-              time_pad=5.0, minSTFpoints=16, integrate=False):
+def write_srf(file_path, inv_or_rupt, segment_plots, stf_dt = 0.1, stf_type = 'triangle',
+              time_pad = 5.0, minSTFpoints = 16, integrate = False, one_block = False):
     '''
     Convert a mudpy .rupt or .inv file to SRF version 2 format
     Works with faults with multiple segments - this one is set up specifically for the M7
@@ -573,8 +573,12 @@ def write_srf(file_path, inv_or_rupt, segment_plots, stf_dt=0.1, stf_type='trian
         min_row = np.where(np.abs(depth_seg - min(depth_seg)) < tol)[0]  # Minimum depth
         Nstrike = len(num_seg[min_row])
         Ndip = len(num_seg) / Nstrike
-
-        fout.write('POINTS %d\n' % (Nstrike * Ndip * 5))
+        
+        if one_block:
+            if plane_num == 1:
+                fout.write('POINTS %d\n' % (3120))
+        else:
+            fout.write('POINTS %d\n' % (Nstrike * Ndip * 5))
 
         # Get the subfault source time functions
         # Note mudpy works in mks; SRF is cgs so must convert accordingly
