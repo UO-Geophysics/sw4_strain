@@ -1,0 +1,39 @@
+####################################################
+### SW4 INPUT FILE FOR JAPAN FOR TARA ###
+####################################################
+# Run me with mpirun -np $num_cpus$ $path_to_sw4_folder$ japan.in
+# Or with a slurm script on Talapas
+
+# Sets up the grid
+grid x=456045 y=531463 z=1030000 lat=34.763 lon=137.133 az=0 h=480 # lat and lon are grid origin location, h defines grid spacing
+
+# Sets up supergrid
+supergrid gp=30
+
+# Output directory
+fileio path=japan-results verbose=1
+
+# Define the material properties everywhere (half-space)
+block vp=2500 vs=1200 rho=2100 z1=0 z2=1000
+block vp=6000 vs=3400 rho=2700 z1=1000 z2=11000
+block vp=6600 vs=3700 rho=2900 z1=11000 z2=21000
+block vp=7200 vs=4000 rho=3100 z1=21000 z2=31000
+block vp=8080 vs=4470 rho=3380 z1=31000
+
+# Japan event converted to SRF
+rupture file=japan.srf
+
+# Length of final waveforms
+time t=390
+
+# Receiver stations
+rec lat=37.091 lon=140.903 depth=0 variables=displacement file=41 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.540 lon=140.612 depth=0 variables=displacement file=42 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.402 lon=139.726 depth=0 variables=displacement file=43 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.697 lon=138.906 depth=0 variables=displacement file=44 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.259 lon=138.865 depth=0 variables=displacement file=45 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.500 lon=137.851 depth=0 variables=displacement file=46 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.924 lon=137.944 depth=0 variables=displacement file=47 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.590 lon=138.583 depth=0 variables=displacement file=48 usgsformat=1 sacformat=0 writeEvery=50
+rec lat=38.231 lon=139.510 depth=0 variables=displacement file=49 usgsformat=1 sacformat=0 writeEvery=50
+
