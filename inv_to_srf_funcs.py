@@ -105,14 +105,17 @@ def fault_segments(file_path, called_from_mud2srf=False):
 
         # Plot the segments in separate colors - map view
 
-        plt.title(file_path)
-        plt.scatter(lon[f3], lat[f3], s=4, color='blue', label='F3')
-        plt.scatter(lon[f4], lat[f4], s=4, color='red', label='F4')
-        plt.scatter(lon[f5], lat[f5], s=4, color='orange', label='F5')
-        plt.scatter(lon[f6], lat[f6], s=4, color='turquoise', label='F6')
+        plt.figure(dpi = 400)
+        plt.title('M7.1 Ridgecrest earthquake fault (map view)')
+        plt.scatter(lon[f3], lat[f3], s=4, color='blue', label='Segment 3')
+        plt.scatter(lon[f4], lat[f4], s=4, color='red', label='Segment 4')
+        plt.scatter(lon[f5], lat[f5], s=4, color='orange', label='Segment 5')
+        plt.scatter(lon[f6], lat[f6], s=4, color='turquoise', label='Segment 6')
         plt.legend()
 
-        plt.show()
+        # plt.show()
+        plt.savefig('/Users/sydneydybing/SW4/strain/fault_segment_map.png', format = 'PNG')
+        plt.close()
 
         # Plot them 3D view
 
@@ -126,8 +129,9 @@ def fault_segments(file_path, called_from_mud2srf=False):
         else:
             plot_variable = onset
 
-        fig = plt.figure(figsize=(14, 4))
+        fig = plt.figure(figsize=(14, 4), dpi = 400)
         ax = fig.add_subplot(111, projection='3d')
+        ax.set_title('M7.1 Ridgecrest earthquake fault (3D view)')
 
         if clims == None:
             p = ax.scatter(lon, lat, depth, c=plot_variable, cmap=cmap, marker='o', s=marker_size, lw=0)
@@ -149,9 +153,11 @@ def fault_segments(file_path, called_from_mud2srf=False):
         else:
             cb.set_label('Onset time (s)')
 
-        plt.subplots_adjust(left=0.1, bottom=0.1, right=1.0, top=0.9, wspace=0, hspace=0)
+        # plt.subplots_adjust(left=0.1, bottom=0.1, right=1.0, top=0.9, wspace=0, hspace=0)
 
-        plt.show()
+        # plt.show()
+        plt.savefig('/Users/sydneydybing/SW4/strain/fault_3D_view.png', format = 'PNG')
+        plt.close()
 
     return segments
 
