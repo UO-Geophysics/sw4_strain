@@ -1,0 +1,208 @@
+####################################################
+### SW4 INPUT FILE FOR RIDGECREST, CALIFORNIA - STRAINS ###
+####################################################
+# Run me with mpirun -np $num_cpus$ $path_to_sw4_folder$ multiseg_oneblock.in
+# Or with a slurm script on Talapas
+
+# Sets up the grid
+grid x=440057 y=479549 z=1030000 lat=32.861 lon=-121.032 az=0 h=810 # lat and lon are grid origin location, h defines grid spacing
+
+# Sets up supergrid
+supergrid gp=30
+
+# Output directory
+fileio path=multiseg_oneblock-results verbose=1
+
+# Define the material properties everywhere (half-space)
+block vp=1839 vs=810 rho=2100 z1=0 z2=30
+block vp=2800 vs=1400 rho=2300 z1=30 z2=100
+block vp=3400 vs=1700 rho=2400 z1=100 z2=300
+block vp=3900 vs=2000 rho=2500 z1=300 z2=500
+block vp=4300 vs=2300 rho=2600 z1=500 z2=700
+block vp=4400 vs=2500 rho=2650 z1=700 z2=1000
+block vp=5100 vs=2800 rho=2700 z1=1000 z2=3000
+block vp=6000 vs=3300 rho=2750 z1=3000 z2=5000
+block vp=6100 vs=3450 rho=2800 z1=5000 z2=6000
+block vp=6150 vs=3600 rho=2825 z1=6000 z2=11000
+block vp=6320 vs=3650 rho=2850 z1=11000 z2=16000
+block vp=6550 vs=3700 rho=2900 z1=16000 z2=21000
+block vp=6800 vs=3800 rho=2950 z1=21000 z2=31000
+block vp=7800 vs=4500 rho=3200 z1=31000
+
+# Dara's 2020 paper 4-segment model of the M7.1 converted to SRF
+rupture file=RC_M7_multiseg_oneblock.srf
+
+# Length of final waveforms
+time t=120
+
+# Receiver stations
+rec lat=35.831 lon=-120.345 depth=159.7 variables=strains file=B072s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.831 lon=-120.345 depth=159.7 variables=displacement file=B072d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.716 lon=-120.206 depth=181.5 variables=strains file=B079s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.716 lon=-120.206 depth=181.5 variables=displacement file=B079d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=242.6 variables=strains file=B082s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=242.6 variables=displacement file=B082d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.495 lon=-116.603 depth=160.9 variables=strains file=B087s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.495 lon=-116.603 depth=160.9 variables=displacement file=B087d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.193 lon=-117.668 depth=176.5 variables=strains file=B916s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.193 lon=-117.668 depth=176.5 variables=displacement file=B916d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.389 lon=-117.259 depth=162.5 variables=strains file=B917s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.389 lon=-117.259 depth=162.5 variables=displacement file=B917d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.936 lon=-117.602 depth=196.7 variables=strains file=B918s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.936 lon=-117.602 depth=196.7 variables=displacement file=B918d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.587 lon=-117.462 depth=147.4 variables=strains file=B921s usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.587 lon=-117.462 depth=147.4 variables=displacement file=B921d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.015 lon=-119.363 depth=0 variables=displacement file=ANA1d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.126 lon=-117.896 depth=0 variables=displacement file=AZU1d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.582 lon=-119.982 depth=0 variables=displacement file=BBDMd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.264 lon=-116.884 depth=0 variables=displacement file=BBRYd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.878 lon=-118.074 depth=0 variables=displacement file=BEPKd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.578 lon=-117.065 depth=0 variables=displacement file=BILLd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.962 lon=-118.095 depth=0 variables=displacement file=BKMSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.919 lon=-117.012 depth=0 variables=displacement file=BSRYd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.157 lon=-119.348 depth=0 variables=displacement file=BVPPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.888 lon=-120.431 depth=0 variables=displacement file=CARHd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.139 lon=-118.630 depth=0 variables=displacement file=CBHSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.565 lon=-117.671 depth=0 variables=displacement file=CCCCd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.858 lon=-117.609 depth=0 variables=displacement file=CNPPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.415 lon=-119.880 depth=0 variables=displacement file=COPRd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.072 lon=-117.573 depth=0 variables=displacement file=CPBNd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.824 lon=-118.273 depth=0 variables=displacement file=CRHSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.029 lon=-119.785 depth=0 variables=displacement file=CRU1d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.168 lon=-119.039 depth=0 variables=displacement file=CSCId usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.408 lon=-119.371 depth=0 variables=displacement file=CSSTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.517 lon=-118.613 depth=0 variables=displacement file=CTDMd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.733 lon=-116.712 depth=0 variables=displacement file=DSSCd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.648 lon=-117.412 depth=0 variables=displacement file=ECFSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.583 lon=-118.129 depth=0 variables=displacement file=ELLYd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.104 lon=-117.526 depth=0 variables=displacement file=EWPPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.733 lon=-120.009 depth=0 variables=displacement file=FGSTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.356 lon=-118.884 depth=0 variables=displacement file=FMVTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.760 lon=-117.800 depth=0 variables=displacement file=HIVId usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.881 lon=-120.402 depth=0 variables=displacement file=HUNTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.441 lon=-119.188 depth=0 variables=displacement file=HVYSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.662 lon=-118.474 depth=0 variables=displacement file=ISLKd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.399 lon=-119.008 depth=0 variables=displacement file=KBRCd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.182 lon=-118.575 depth=0 variables=displacement file=LAPCd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.095 lon=-118.413 depth=0 variables=displacement file=LFRSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.641 lon=-117.764 depth=0 variables=displacement file=LGWDd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.090 lon=-116.940 depth=0 variables=displacement file=LNMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.133 lon=-117.754 depth=0 variables=displacement file=LORSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.857 lon=-117.437 depth=0 variables=displacement file=MAT2d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.038 lon=-120.351 depth=0 variables=displacement file=MIG1d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.918 lon=-117.318 depth=0 variables=displacement file=MLFPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.296 lon=-118.878 depth=0 variables=displacement file=MPWDd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.499 lon=-119.141 depth=0 variables=displacement file=NHRGd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.739 lon=-120.279 depth=0 variables=displacement file=ORESd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.675 lon=-116.815 depth=0 variables=displacement file=ORMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.327 lon=-119.142 depth=0 variables=displacement file=OVLSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.683 lon=-119.353 depth=0 variables=displacement file=OZSTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.027 lon=-119.063 depth=0 variables=displacement file=P056d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.544 lon=-120.348 depth=0 variables=displacement file=P280d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.841 lon=-120.389 depth=0 variables=displacement file=P281d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.838 lon=-120.345 depth=0 variables=displacement file=P282d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.016 lon=-120.294 depth=0 variables=displacement file=P298d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.071 lon=-116.629 depth=0 variables=displacement file=P462d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=36.022 lon=-117.165 depth=0 variables=displacement file=P463d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.462 lon=-117.394 depth=0 variables=displacement file=P470d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.562 lon=-117.541 depth=0 variables=displacement file=P471d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.503 lon=-117.113 depth=0 variables=displacement file=P477d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.493 lon=-116.783 depth=0 variables=displacement file=P479d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.011 lon=-120.410 depth=0 variables=displacement file=P514d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.871 lon=-120.240 depth=0 variables=displacement file=P515d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.106 lon=-120.383 depth=0 variables=displacement file=P516d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.020 lon=-120.075 depth=0 variables=displacement file=P518d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.508 lon=-119.792 depth=0 variables=displacement file=P519d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.630 lon=-119.616 depth=0 variables=displacement file=P520d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.889 lon=-119.815 depth=0 variables=displacement file=P521d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.087 lon=-119.536 depth=0 variables=displacement file=P522d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.440 lon=-120.354 depth=0 variables=displacement file=P529d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.634 lon=-120.267 depth=0 variables=displacement file=P532d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.748 lon=-120.371 depth=0 variables=displacement file=P533d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.280 lon=-120.025 depth=0 variables=displacement file=P536d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.317 lon=-119.935 depth=0 variables=displacement file=P537d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.534 lon=-120.112 depth=0 variables=displacement file=P538d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.703 lon=-120.182 depth=0 variables=displacement file=P539d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.801 lon=-120.131 depth=0 variables=displacement file=P540d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.687 lon=-120.001 depth=0 variables=displacement file=P541d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.689 lon=-120.293 depth=0 variables=displacement file=P542d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.319 lon=-119.713 depth=0 variables=displacement file=P543d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.500 lon=-119.536 depth=0 variables=displacement file=P545d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.928 lon=-120.155 depth=0 variables=displacement file=P546d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.935 lon=-119.909 depth=0 variables=displacement file=P547d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.467 lon=-119.504 depth=0 variables=displacement file=P548d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.856 lon=-119.155 depth=0 variables=displacement file=P551d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.687 lon=-120.245 depth=0 variables=displacement file=P552d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.835 lon=-118.879 depth=0 variables=displacement file=P553d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.792 lon=-118.848 depth=0 variables=displacement file=P554d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.771 lon=-118.545 depth=0 variables=displacement file=P556d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.944 lon=-118.656 depth=0 variables=displacement file=P557d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.822 lon=-118.541 depth=0 variables=displacement file=P560d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.419 lon=-119.421 depth=0 variables=displacement file=P563d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.623 lon=-119.349 depth=0 variables=displacement file=P564d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.744 lon=-119.237 depth=0 variables=displacement file=P565d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.421 lon=-118.754 depth=0 variables=displacement file=P567d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.254 lon=-118.126 depth=0 variables=displacement file=P568d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.667 lon=-118.260 depth=0 variables=displacement file=P570d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.305 lon=-117.319 depth=0 variables=displacement file=P577d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.039 lon=-118.006 depth=0 variables=displacement file=P579d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.621 lon=-117.192 depth=0 variables=displacement file=P580d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.510 lon=-117.729 depth=0 variables=displacement file=P581d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.634 lon=-117.549 depth=0 variables=displacement file=P582d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.987 lon=-117.543 depth=0 variables=displacement file=P583d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.893 lon=-116.952 depth=0 variables=displacement file=P584d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.535 lon=-117.281 depth=0 variables=displacement file=P586d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.621 lon=-117.110 depth=0 variables=displacement file=P589d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.117 lon=-117.365 depth=0 variables=displacement file=P590d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.152 lon=-118.016 depth=0 variables=displacement file=P591d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.238 lon=-117.304 depth=0 variables=displacement file=P592d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.388 lon=-117.205 depth=0 variables=displacement file=P593d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.897 lon=-117.390 depth=0 variables=displacement file=P594d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.698 lon=-117.403 depth=0 variables=displacement file=P595d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.192 lon=-116.710 depth=0 variables=displacement file=P598d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.729 lon=-120.227 depth=0 variables=displacement file=P602d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.937 lon=-116.671 depth=0 variables=displacement file=P604d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.462 lon=-116.880 depth=0 variables=displacement file=P606d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.187 lon=-117.316 depth=0 variables=displacement file=P612d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.196 lon=-117.050 depth=0 variables=displacement file=P613d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.205 lon=-116.763 depth=0 variables=displacement file=P615d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.425 lon=-117.893 depth=0 variables=displacement file=P616d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.263 lon=-119.096 depth=0 variables=displacement file=P729d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.598 lon=-116.596 depth=0 variables=displacement file=P740d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.557 lon=-116.531 depth=0 variables=displacement file=P741d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.496 lon=-116.603 depth=0 variables=displacement file=P742d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.537 lon=-116.593 depth=0 variables=displacement file=P797d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.928 lon=-118.306 depth=0 variables=displacement file=P799d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.022 lon=-118.349 depth=0 variables=displacement file=P800d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.744 lon=-119.237 depth=0 variables=displacement file=P809d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.744 lon=-119.237 depth=0 variables=displacement file=P810d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.152 lon=-118.017 depth=0 variables=displacement file=P811d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.152 lon=-118.017 depth=0 variables=displacement file=P812d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.508 lon=-117.923 depth=0 variables=displacement file=PBPPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.072 lon=-118.233 depth=0 variables=displacement file=PKRDd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.836 lon=-117.182 depth=0 variables=displacement file=PPBFd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.774 lon=-118.321 depth=0 variables=displacement file=PVRSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.339 lon=-117.683 depth=0 variables=displacement file=RAMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.500 lon=-119.720 depth=0 variables=displacement file=RCA2d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.644 lon=-116.625 depth=0 variables=displacement file=RDMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.019 lon=-118.026 depth=0 variables=displacement file=RHCLd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.486 lon=-117.555 depth=0 variables=displacement file=RMVJd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.875 lon=-118.193 depth=0 variables=displacement file=RSTPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.541 lon=-119.184 depth=0 variables=displacement file=RSVYd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.553 lon=-117.661 depth=0 variables=displacement file=SBCCd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.607 lon=-117.388 depth=0 variables=displacement file=SCIAd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.439 lon=-118.479 depth=0 variables=displacement file=SKYBd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.320 lon=-119.064 depth=0 variables=displacement file=SOMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.993 lon=-117.849 depth=0 variables=displacement file=SPMSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.004 lon=-120.065 depth=0 variables=displacement file=SRS1d usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.158 lon=-118.415 depth=0 variables=displacement file=THCPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=33.550 lon=-117.767 depth=0 variables=displacement file=THMSd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.483 lon=-120.133 depth=0 variables=displacement file=TJRNd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.248 lon=-118.837 depth=0 variables=displacement file=TOSTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.179 lon=-118.220 depth=0 variables=displacement file=VDCYd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.126 lon=-118.514 depth=0 variables=displacement file=VIMTd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.276 lon=-119.238 depth=0 variables=displacement file=VNCOd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.293 lon=-118.485 depth=0 variables=displacement file=VNCXd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=35.011 lon=-118.984 depth=0 variables=displacement file=WGPPd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.568 lon=-118.742 depth=0 variables=displacement file=WKPKd usgsformat=1 sacformat=0 writeEvery=50
+rec lat=34.669 lon=-116.932 depth=0 variables=displacement file=WOMTd usgsformat=1 sacformat=0 writeEvery=50
