@@ -30,7 +30,7 @@ block vp=6800 vs=3800 rho=2950 z1=21000 z2=31000
 block vp=7800 vs=4500 rho=3200 z1=31000
 
 # Chosen FakeQuake rupture converted to SRF
-rupture file=usgs_plane_fine.000001_MH2017.srf
+rupture file=usgs_plane_fine.000004_MH2017+1.srf
 
 # Length of final waveforms
 time t=120
